@@ -12,6 +12,7 @@ import {
 
 import { setContext } from "@apollo/client/link/context";
 
+// COPY AND PASTE THIS LINK SETUP FROM LECTURE NOTES
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
     uri: "/graphql",
@@ -33,11 +34,12 @@ const authLink = setContext((_, { headers }) => {
 const client = new ApolloClient({
     // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
     link: authLink.concat(httpLink),
-    cache: new InMemoryCache()
+    cache: new InMemoryCache(),
 });
 
 function App() {
     return (
+        // user apollo server wrapper so the graphQL be accessible everywhere on client side
         <ApolloProvider client={client}>
             <Router>
                 <>

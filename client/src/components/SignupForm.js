@@ -29,20 +29,11 @@ const SignupForm = () => {
     }
 
     try {
-      // const response = await createUser(userFormData);
-
-      // if (!response.ok) {
-      //   throw new Error('something went wrong!');
-      // }
-
-      // const { token, user } = await response.json();
-      // console.log(user);
-      // Auth.login(token);
-
+      // GraphQL to add user
       const { data } = await addUser({
         variables: { ...userFormData },
       });
-
+      // then use the new user info to login and get token
       Auth.login(data.addUser.token);
 
     } catch (err) {

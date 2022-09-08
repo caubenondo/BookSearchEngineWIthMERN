@@ -1,4 +1,5 @@
 import gql from "graphql-tag";
+// coppy and paste these from Apollo Explorer endpoint
 
 export const LOGIN_USER = gql `
 mutation login($email: String!, $password: String!) {
